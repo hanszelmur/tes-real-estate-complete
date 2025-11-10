@@ -20,11 +20,16 @@ export const CustomerSupportPage: React.FC = () => {
   const { inquiries, initializeInquiries, addInquiry } = useInquiryStore();
   const { createNotification } = useNotificationStore();
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    subject: string;
+    description: string;
+    category: Inquiry['category'];
+    priority: Inquiry['priority'];
+  }>({
     subject: '',
     description: '',
-    category: 'general' as const,
-    priority: 'medium' as const,
+    category: 'general',
+    priority: 'medium',
   });
 
   useEffect(() => {
@@ -193,7 +198,7 @@ export const CustomerSupportPage: React.FC = () => {
             <Select
               label="Category"
               value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value as Inquiry['category'] })}
               options={[
                 { value: 'general', label: 'General Inquiry' },
                 { value: 'property', label: 'Property Related' },
@@ -208,7 +213,7 @@ export const CustomerSupportPage: React.FC = () => {
             <Select
               label="Priority"
               value={formData.priority}
-              onChange={(e) => setFormData({ ...formData, priority: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, priority: e.target.value as Inquiry['priority'] })}
               options={[
                 { value: 'low', label: 'Low' },
                 { value: 'medium', label: 'Medium' },

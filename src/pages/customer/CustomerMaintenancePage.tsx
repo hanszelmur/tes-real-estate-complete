@@ -22,12 +22,18 @@ export const CustomerMaintenancePage: React.FC = () => {
   const { properties, initializeProperties } = usePropertyStore();
   const { createNotification } = useNotificationStore();
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    propertyId: string;
+    title: string;
+    description: string;
+    priority: MaintenanceRequest['priority'];
+    category: MaintenanceRequest['category'];
+  }>({
     propertyId: '',
     title: '',
     description: '',
-    priority: 'medium' as const,
-    category: 'other' as const,
+    priority: 'medium',
+    category: 'other',
   });
 
   useEffect(() => {
@@ -229,7 +235,7 @@ export const CustomerMaintenancePage: React.FC = () => {
             <Select
               label="Priority"
               value={formData.priority}
-              onChange={(e) => setFormData({ ...formData, priority: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, priority: e.target.value as MaintenanceRequest['priority'] })}
               options={[
                 { value: 'low', label: 'Low' },
                 { value: 'medium', label: 'Medium' },
@@ -242,7 +248,7 @@ export const CustomerMaintenancePage: React.FC = () => {
             <Select
               label="Category"
               value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value as MaintenanceRequest['category'] })}
               options={[
                 { value: 'plumbing', label: 'Plumbing' },
                 { value: 'electrical', label: 'Electrical' },
