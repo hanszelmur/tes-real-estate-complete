@@ -1,4 +1,16 @@
-import type { User, Property, Appointment, Review, Notification } from '../types';
+import type { 
+  User, 
+  Property, 
+  Appointment, 
+  Review, 
+  Notification, 
+  Payment, 
+  Contract, 
+  MaintenanceRequest, 
+  Inquiry, 
+  Equipment, 
+  Vehicle 
+} from '../types';
 
 const STORAGE_KEYS = {
   USERS: 'tes_users',
@@ -7,6 +19,12 @@ const STORAGE_KEYS = {
   REVIEWS: 'tes_reviews',
   NOTIFICATIONS: 'tes_notifications',
   CURRENT_USER: 'tes_current_user',
+  PAYMENTS: 'tes_payments',
+  CONTRACTS: 'tes_contracts',
+  MAINTENANCE: 'tes_maintenance',
+  INQUIRIES: 'tes_inquiries',
+  EQUIPMENT: 'tes_equipment',
+  VEHICLES: 'tes_vehicles',
 };
 
 export const storageService = {
@@ -74,4 +92,58 @@ export const storageService = {
       localStorage.removeItem(key);
     });
   },
+};
+
+// Payment functions
+export const loadPayments = (): Payment[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.PAYMENTS) || '[]');
+};
+
+export const savePayments = (payments: Payment[]): void => {
+  localStorage.setItem(STORAGE_KEYS.PAYMENTS, JSON.stringify(payments));
+};
+
+// Contract functions
+export const loadContracts = (): Contract[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.CONTRACTS) || '[]');
+};
+
+export const saveContracts = (contracts: Contract[]): void => {
+  localStorage.setItem(STORAGE_KEYS.CONTRACTS, JSON.stringify(contracts));
+};
+
+// Maintenance functions
+export const loadMaintenanceRequests = (): MaintenanceRequest[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.MAINTENANCE) || '[]');
+};
+
+export const saveMaintenanceRequests = (requests: MaintenanceRequest[]): void => {
+  localStorage.setItem(STORAGE_KEYS.MAINTENANCE, JSON.stringify(requests));
+};
+
+// Inquiry functions
+export const loadInquiries = (): Inquiry[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.INQUIRIES) || '[]');
+};
+
+export const saveInquiries = (inquiries: Inquiry[]): void => {
+  localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(inquiries));
+};
+
+// Equipment functions
+export const loadEquipment = (): Equipment[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.EQUIPMENT) || '[]');
+};
+
+export const saveEquipment = (equipment: Equipment[]): void => {
+  localStorage.setItem(STORAGE_KEYS.EQUIPMENT, JSON.stringify(equipment));
+};
+
+// Vehicle functions
+export const loadVehicles = (): Vehicle[] => {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.VEHICLES) || '[]');
+};
+
+export const saveVehicles = (vehicles: Vehicle[]): void => {
+  localStorage.setItem(STORAGE_KEYS.VEHICLES, JSON.stringify(vehicles));
 };
