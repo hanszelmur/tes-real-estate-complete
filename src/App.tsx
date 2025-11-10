@@ -5,6 +5,12 @@ import { usePropertyStore } from './store/propertyStore';
 import { useAppointmentStore } from './store/appointmentStore';
 import { useReviewStore } from './store/reviewStore';
 import { useNotificationStore } from './store/notificationStore';
+import { usePaymentStore } from './store/paymentStore';
+import { useContractStore } from './store/contractStore';
+import { useMaintenanceStore } from './store/maintenanceStore';
+import { useInquiryStore } from './store/inquiryStore';
+import { useEquipmentStore } from './store/equipmentStore';
+import { useVehicleStore } from './store/vehicleStore';
 import { ToastContainer } from './components/shared/Toast';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
@@ -21,6 +27,10 @@ import { MyBookingsPage } from './pages/customer/MyBookingsPage';
 import { BookingDetailsPage } from './pages/customer/BookingDetailsPage';
 import { ProfilePage } from './pages/customer/ProfilePage';
 import { CustomerReviewsPage } from './pages/customer/CustomerReviewsPage';
+import { CustomerPaymentsPage } from './pages/customer/CustomerPaymentsPage';
+import { CustomerContractsPage } from './pages/customer/CustomerContractsPage';
+import { CustomerMaintenancePage } from './pages/customer/CustomerMaintenancePage';
+import { CustomerSupportPage } from './pages/customer/CustomerSupportPage';
 
 // Agent pages
 import { AgentDashboardPage } from './pages/agent/AgentDashboardPage';
@@ -35,6 +45,8 @@ import { AdminPropertiesPage } from './pages/admin/AdminPropertiesPage';
 import { UserManagementPage } from './pages/admin/UserManagementPage';
 import { AppointmentManagementPage } from './pages/admin/AppointmentManagementPage';
 import { ReviewModerationPage } from './pages/admin/ReviewModerationPage';
+import { AdminEquipmentPage } from './pages/admin/AdminEquipmentPage';
+import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 
 function App() {
   const initializeAuth = useAuthStore(state => state.initializeAuth);
@@ -42,6 +54,12 @@ function App() {
   const initializeAppointments = useAppointmentStore(state => state.initializeAppointments);
   const initializeReviews = useReviewStore(state => state.initializeReviews);
   const initializeNotifications = useNotificationStore(state => state.initializeNotifications);
+  const initializePayments = usePaymentStore(state => state.initializePayments);
+  const initializeContracts = useContractStore(state => state.initializeContracts);
+  const initializeRequests = useMaintenanceStore(state => state.initializeRequests);
+  const initializeInquiries = useInquiryStore(state => state.initializeInquiries);
+  const initializeEquipment = useEquipmentStore(state => state.initializeEquipment);
+  const initializeVehicles = useVehicleStore(state => state.initializeVehicles);
 
   useEffect(() => {
     // Initialize all stores with data from localStorage
@@ -50,6 +68,12 @@ function App() {
     initializeAppointments();
     initializeReviews();
     initializeNotifications();
+    initializePayments();
+    initializeContracts();
+    initializeRequests();
+    initializeInquiries();
+    initializeEquipment();
+    initializeVehicles();
   }, []);
 
   return (
@@ -99,6 +123,38 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={['customer']}>
               <BookingDetailsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customer/payments"
+          element={
+            <ProtectedRoute allowedRoles={['customer']}>
+              <CustomerPaymentsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customer/contracts"
+          element={
+            <ProtectedRoute allowedRoles={['customer']}>
+              <CustomerContractsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customer/maintenance"
+          element={
+            <ProtectedRoute allowedRoles={['customer']}>
+              <CustomerMaintenancePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/customer/support"
+          element={
+            <ProtectedRoute allowedRoles={['customer']}>
+              <CustomerSupportPage />
             </ProtectedRoute>
           }
         />
@@ -223,6 +279,22 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <ReviewModerationPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/equipment"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminEquipmentPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/settings"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminSettingsPage />
             </ProtectedRoute>
           }
         />
