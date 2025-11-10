@@ -4,10 +4,11 @@ import {
   LayoutDashboard, 
   Building2, 
   Calendar, 
-  Star, 
   User, 
   CheckCircle,
-  Settings
+  Settings,
+  CreditCard,
+  Wrench
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import type { UserRole } from '../../types';
@@ -20,23 +21,25 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  // Customer routes
+  // Customer routes (most important 5)
   { path: '/customer/dashboard', label: 'Browse', icon: <Building2 className="w-6 h-6" />, roles: ['customer'] },
   { path: '/customer/bookings', label: 'Bookings', icon: <Calendar className="w-6 h-6" />, roles: ['customer'] },
-  { path: '/customer/reviews', label: 'Reviews', icon: <Star className="w-6 h-6" />, roles: ['customer'] },
+  { path: '/customer/payments', label: 'Payments', icon: <CreditCard className="w-6 h-6" />, roles: ['customer'] },
+  { path: '/customer/maintenance', label: 'Requests', icon: <Wrench className="w-6 h-6" />, roles: ['customer'] },
   { path: '/customer/profile', label: 'Profile', icon: <User className="w-6 h-6" />, roles: ['customer'] },
   
-  // Agent routes
+  // Agent routes (most important 5)
   { path: '/agent/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-6 h-6" />, roles: ['agent'] },
   { path: '/agent/properties', label: 'Properties', icon: <Building2 className="w-6 h-6" />, roles: ['agent'] },
   { path: '/agent/appointments', label: 'Bookings', icon: <Calendar className="w-6 h-6" />, roles: ['agent'] },
+  { path: '/agent/maintenance', label: 'Requests', icon: <Wrench className="w-6 h-6" />, roles: ['agent'] },
   { path: '/agent/profile', label: 'Profile', icon: <User className="w-6 h-6" />, roles: ['agent'] },
   
   // Admin routes (showing only 4 most important)
   { path: '/admin/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-6 h-6" />, roles: ['admin'] },
   { path: '/admin/agents', label: 'Agents', icon: <CheckCircle className="w-6 h-6" />, roles: ['admin'] },
   { path: '/admin/properties', label: 'Properties', icon: <Building2 className="w-6 h-6" />, roles: ['admin'] },
-  { path: '/admin/menu', label: 'More', icon: <Settings className="w-6 h-6" />, roles: ['admin'] },
+  { path: '/admin/settings', label: 'More', icon: <Settings className="w-6 h-6" />, roles: ['admin'] },
 ];
 
 export const BottomNav: React.FC = () => {

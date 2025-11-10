@@ -10,7 +10,15 @@ import {
   CheckCircle,
   BarChart3,
   Settings,
-  LogOut
+  LogOut,
+  CreditCard,
+  FileText,
+  Wrench,
+  HelpCircle,
+  Laptop,
+  Car,
+  UsersRound,
+  FileBarChart
 } from 'lucide-react';
 import { Logo } from '../shared/Logo';
 import { useAuthStore } from '../../store/authStore';
@@ -27,6 +35,10 @@ const navItems: NavItem[] = [
   // Customer routes
   { path: '/customer/dashboard', label: 'Browse', icon: <Building2 className="w-5 h-5" />, roles: ['customer'] },
   { path: '/customer/bookings', label: 'My Bookings', icon: <Calendar className="w-5 h-5" />, roles: ['customer'] },
+  { path: '/customer/payments', label: 'Payments', icon: <CreditCard className="w-5 h-5" />, roles: ['customer'] },
+  { path: '/customer/contracts', label: 'Contracts', icon: <FileText className="w-5 h-5" />, roles: ['customer'] },
+  { path: '/customer/maintenance', label: 'Maintenance', icon: <Wrench className="w-5 h-5" />, roles: ['customer'] },
+  { path: '/customer/support', label: 'Support', icon: <HelpCircle className="w-5 h-5" />, roles: ['customer'] },
   { path: '/customer/reviews', label: 'My Reviews', icon: <Star className="w-5 h-5" />, roles: ['customer'] },
   { path: '/customer/profile', label: 'Profile', icon: <User className="w-5 h-5" />, roles: ['customer'] },
   
@@ -34,6 +46,9 @@ const navItems: NavItem[] = [
   { path: '/agent/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" />, roles: ['agent'] },
   { path: '/agent/properties', label: 'Properties', icon: <Building2 className="w-5 h-5" />, roles: ['agent'] },
   { path: '/agent/appointments', label: 'Appointments', icon: <Calendar className="w-5 h-5" />, roles: ['agent'] },
+  { path: '/agent/maintenance', label: 'Maintenance', icon: <Wrench className="w-5 h-5" />, roles: ['agent'] },
+  { path: '/agent/payments', label: 'Payments', icon: <CreditCard className="w-5 h-5" />, roles: ['agent'] },
+  { path: '/agent/support', label: 'Support', icon: <HelpCircle className="w-5 h-5" />, roles: ['agent'] },
   { path: '/agent/performance', label: 'Performance', icon: <BarChart3 className="w-5 h-5" />, roles: ['agent'] },
   { path: '/agent/profile', label: 'Profile', icon: <User className="w-5 h-5" />, roles: ['agent'] },
   
@@ -44,7 +59,15 @@ const navItems: NavItem[] = [
   { path: '/admin/properties', label: 'Properties', icon: <Building2 className="w-5 h-5" />, roles: ['admin'] },
   { path: '/admin/appointments', label: 'Appointments', icon: <Calendar className="w-5 h-5" />, roles: ['admin'] },
   { path: '/admin/reviews', label: 'Reviews', icon: <Star className="w-5 h-5" />, roles: ['admin'] },
-  { path: '/admin/menu', label: 'More', icon: <Settings className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/payments', label: 'Payments', icon: <CreditCard className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/contracts', label: 'Contracts', icon: <FileText className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/maintenance', label: 'Maintenance', icon: <Wrench className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/support', label: 'Support', icon: <HelpCircle className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/equipment', label: 'Equipment', icon: <Laptop className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/vehicles', label: 'Vehicles', icon: <Car className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/staffing', label: 'Staffing', icon: <UsersRound className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/reports', label: 'Reports', icon: <FileBarChart className="w-5 h-5" />, roles: ['admin'] },
+  { path: '/admin/settings', label: 'Settings', icon: <Settings className="w-5 h-5" />, roles: ['admin'] },
 ];
 
 export const Sidebar: React.FC = () => {
